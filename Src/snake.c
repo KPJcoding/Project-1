@@ -4,8 +4,8 @@
 #include <time.h>
 
 //Size of grid for the game
-#define width 32
-#define height 40
+#define width 30
+#define height 48
 
 //Different game states
 typedef enum
@@ -141,9 +141,9 @@ void lcd_data(uint32_t d)
 
 void move_snake(Snake *snake)
 {
-  
+
   for(int i=snake->length-1;i>0;i--)
-  { 
+  {
     if(i==snake->length-1)
     {
       snake->prev_tail=snake->body[i];//We need prev pos of tail as we have to increase size after eating apple
@@ -179,7 +179,7 @@ int is_on_snake(Snake *snake,int x,int y)
     {
       return 1;
     }
-    
+
   }
   return 0;
 }
@@ -241,11 +241,11 @@ void draw_snake(Snake *snake)
 
 	lcd_cmd(0x2A);
 	lcd_data(0); lcd_data(x1);
-	lcd_data(0); lcd_data(x1+2);
+	lcd_data(0); lcd_data(x1+4);
 
 	lcd_cmd(0x2B);
 	lcd_data(0); lcd_data(y1);
-	lcd_data(0); lcd_data(y1+2);
+	lcd_data(0); lcd_data(y1+4);
 
 	lcd_cmd(0x2C);
 	lcd_data(0xDB);
